@@ -510,20 +510,6 @@ export default function EditPanel({
         {/* Danger Zone / Deactivation / Reset Option */}
         <div className="flex flex-col gap-2.5 pt-2 border-t border-[var(--divider)]">
           <div className="flex justify-between items-center text-xs">
-            <span className="text-[var(--text-dim)] font-medium">License Panel</span>
-            <button
-              onClick={() => {
-                localStorage.removeItem('overdesk_license_verified');
-                localStorage.removeItem('overdesk_license_key');
-                window.location.reload();
-              }}
-              className="px-3 py-1 rounded-xl text-xs font-semibold bg-[var(--row-bg)] border border-[var(--divider)] hover:bg-[var(--row-hover)] text-violet-500 transition-all active:scale-95"
-            >
-              Deactivate License
-            </button>
-          </div>
-          
-          <div className="flex justify-between items-center text-xs">
             <span className="text-[var(--text-dim)] font-medium">Danger Zone</span>
             <button
               onClick={handleResetClick}

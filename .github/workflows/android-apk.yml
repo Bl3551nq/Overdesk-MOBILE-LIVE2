@@ -26,10 +26,10 @@ jobs:
       - name: Build Web Production Assets
         run: npm run build
 
-      - name: Install Capacitor Core & CLI
+      - name: Install Capacitor v6 Core & CLI
         run: |
-          npm install @capacitor/core @capacitor/cli
-          npm install @capacitor/android
+          npm install @capacitor/core@6 @capacitor/cli@6
+          npm install @capacitor/android@6
 
       - name: Initialize Capacitor Config
         run: |
@@ -43,11 +43,11 @@ jobs:
         run: |
           npx cap sync android
 
-      - name: Set up Java JDK 21 (Required for Android build)
+      - name: Set up Java JDK 17 (Required for Capacitor 6 Build)
         uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
-          java-version: '21'
+          java-version: '17'
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
@@ -55,6 +55,7 @@ jobs:
       - name: Build Android APK with Gradle
         run: |
           cd android
+          chmod +x gradlew
           ./gradlew assembleDebug
 
       - name: Upload APK Artifact
